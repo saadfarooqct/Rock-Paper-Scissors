@@ -4,35 +4,26 @@ r = "rock"
 p = "paper"
 s = "scissor"
 
-def choose():
-    user = input("What will you choose? Rock, Paper, or Scissors?")
-    computer = random.choice(["r","p","s"])
-choose()
+player_score = 0
+computer_score = 0
 
-class Game:
-    def __init__(self, player, computer, tie) -> None:
-        self.player = player
-        self.computer = computer
-        self.tie = tie
+for i in range(6):
+    if i == 5:
+        if player_score > computer_score:
+            print("Congratulations, you have won!\n")
+        else:
+            print("Better luck next time!\n")
+        break
 
-def player(player, computer):
-    if (player == "r" and computer == "s") or (player == "p" and computer == "r") or (player == "s" and computer == "p"):
-        player_score += 1 #type: ignore
-        print(f"You have {player_score} point(s)!")
+    user_choice = input("What will you choose? Rock, Paper, or Scissors? \n")
+    computers_choice = random.choice(["r","p","s"])
 
-def computer(computer, player):
-    if (computer == "r" and player == "s") or (computer == "p" and player == "r") or (computer == "s" and player == "p"):
-        computer_score += 1 #type: ignore
-        print(f"The Computer has {computer_score} point(s)")
+    if (user_choice == "r" and computers_choice == "s") or (user_choice == "p" and computers_choice == "r") or (user_choice == "s" and computers_choice == "p"):
+        player_score += 1
+    elif(user_choice == "r" and computers_choice == "p") or (user_choice == "p" and computers_choice == "s") or (user_choice == "s" and computers_choice == "r"):
+        computer_score += 1
+    elif(user_choice == "r" and computers_choice == "r") or (user_choice == "p" and computers_choice == "p") or (user_choice == "s" and computers_choice == "s"):
+        print("It's a tie! \n")
 
-def tie(player, computer):
-    if (player == "r" and computer == "r") or (player == "p" and computer == "p") or (player == "s" and computer == "s"):
-        print("It's a tie!")
-        player_score += 0 #type: ignore
-        computer_score += 0 #type: ignore
-
-if player_score == 5: #type: ignore
-    print("Congratulations, you have won!")
-
-if computer_score == 5: #type: ignore
-    print("Better luck next time!")
+    print(f"Your score is: {player_score}")
+    print(f"The computer's score is: {computer_score}")
