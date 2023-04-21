@@ -1,32 +1,38 @@
 import random
+
 r = "rock"
 p = "paper"
 s = "scissor"
+
 def choose():
     user = input("What will you choose? Rock, Paper, or Scissors?")
     computer = random.choice(["r","p","s"])
+choose()
 
-Player_Score = 0
-Computer_Score = 0
+class Game:
+    def __init__(self, player, computer, tie) -> None:
+        self.player = player
+        self.computer = computer
+        self.tie = tie
 
 def player(player, computer):
     if (player == "r" and computer == "s") or (player == "p" and computer == "r") or (player == "s" and computer == "p"):
-        Player_Score += 1 #type:ignore
-        print("Nice! You just got a point!")
+        player_score += 1 #type: ignore
+        print(f"You have {player_score} point(s)!")
 
 def computer(computer, player):
     if (computer == "r" and player == "s") or (computer == "p" and player == "r") or (computer == "s" and player == "p"):
-        Computer_Score += 1 #type:ignore
-        print("Ouch! Better luck next time!")
+        computer_score += 1 #type: ignore
+        print(f"The Computer has {computer_score} point(s)")
 
-def Tie(player, computer):
+def tie(player, computer):
     if (player == "r" and computer == "r") or (player == "p" and computer == "p") or (player == "s" and computer == "s"):
         print("It's a tie!")
-        Player_Score += 0 #type:ignore
-        Computer_Score += 0 #type:ignore
+        player_score += 0 #type: ignore
+        computer_score += 0 #type: ignore
 
-if Player_Score == 5:
+if player_score == 5: #type: ignore
     print("Congratulations, you have won!")
 
-if Computer_Score == 5:
+if computer_score == 5: #type: ignore
     print("Better luck next time!")
