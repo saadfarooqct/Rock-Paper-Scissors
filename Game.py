@@ -13,7 +13,7 @@ for i in range(6):
             print("Congratulations, you have won!\n")
         else:
             print("Better luck next time!\n")
-        break
+            break
 
     user_choice = input("What will you choose? Rock, Paper, or Scissors? \n")
     computers_choice = random.choice(["r","p","s"])
